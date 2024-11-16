@@ -12,7 +12,7 @@ This project is a comprehensive **Process Scheduling Solver** that demonstrates 
   - Shortest Remaining Time First (SRTF)
   - Round Robin (RR)
   - Priority Scheduling 
-  - Highest Response Ratio Next (HRRN)
+    
 
 - **Process Data Entry**:
   - Allows input of process information like arrival time, burst time, priority (if applicable), and time quantum for Round Robin.
