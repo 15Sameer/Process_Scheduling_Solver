@@ -1,4 +1,4 @@
-Operating System Project - Process Scheduling Solver
+#Operating System Project - Process Scheduling Solver
 Overview
 This project is a comprehensive Process Scheduling Solver that demonstrates the implementation of various CPU scheduling algorithms. The goal of the project is to visualize and simulate how different algorithms manage process scheduling, calculate related metrics, and optimize process management. This application provides a web-based interface to enter process data, apply different scheduling algorithms, and visualize the results using Gantt charts and detailed tables.
 
