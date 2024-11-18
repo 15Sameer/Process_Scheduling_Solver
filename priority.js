@@ -2,16 +2,17 @@ import { Process } from './process.js';
 
 export function PriorityScheduling(processes) {
     let currentTime = 0; // Tracks the current time during scheduling
-    let completed = 0; 
-    const n = processes.length; 
-    const isCompleted = new Array(n).fill(false); 
-    const ganttChart = []; 
+    let completed = 0;
+    const n = processes.length;
+    const isCompleted = new Array(n).fill(false);
+    const ganttChart = [];
 
+    // Sort by arrival time first, and then by priority if arrival times are the same
     processes.sort((a, b) => {
         if (a.arrivalTime === b.arrivalTime) {
-            return a.priority - b.priority; 
+            return a.priority - b.priority;
         }
-        return a.arrivalTime - b.arrivalTime; 
+        return a.arrivalTime - b.arrivalTime;
     });
 
     while (completed < n) {
@@ -38,12 +39,13 @@ export function PriorityScheduling(processes) {
 
             // Mark the process as completed
             isCompleted[index] = true;
-            completed++; 
+            completed++;
 
             currentTime = process.finishTime; // Update the current time
-            ganttChart.push(process.PID); 
+            ganttChart.push(process.PID);
         } else {
-            // If no process is available to run, just increment the time
+            // No process is available to run, record idle time
+            ganttChart.push('IDLE');
             currentTime++;
         }
     }
