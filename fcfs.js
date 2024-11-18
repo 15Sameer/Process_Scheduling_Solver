@@ -5,18 +5,25 @@ export function FCFS(processes) {
     let time = 0; // Track the current time
     let ganttChart = [];
 
-    
+    // Sort processes by arrival time
     processes.sort((a, b) => a.arrivalTime - b.arrivalTime);
 
     processes.forEach(p => {
+        // Check if there's idle time before the next process arrives
         if (time < p.arrivalTime) {
-            time = p.arrivalTime; // If the process arrives later than the current time, jump to arrival time
+            // If the current time is before the arrival time, record idle time
+            ganttChart.push('IDLE');
+            time = p.arrivalTime; // Jump to the next process's arrival time
         }
-        p.finishTime = time + p.burstTime; 
-        p.turnaroundTime = p.finishTime - p.arrivalTime; 
-        p.waitingTime = p.turnaroundTime - p.burstTime; 
-        ganttChart.push(p.PID); // Record the process in Gantt chart
-        time = p.finishTime; // Update the current time to the finish time of the current process
+
+        // Process execution
+        p.finishTime = time + p.burstTime;
+        p.turnaroundTime = p.finishTime - p.arrivalTime;
+        p.waitingTime = p.turnaroundTime - p.burstTime;
+        ganttChart.push(p.PID); // Record the process in the Gantt chart
+
+        // Update the current time to the finish time of the current process
+        time = p.finishTime;
     });
 
     return ganttChart;
